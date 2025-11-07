@@ -1,6 +1,12 @@
 import asyncio
-import uvloop
 
+# Fix untuk Python 3.10+ agar event loop ada di MainThread
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    asyncio.set_event_loop(asyncio.new_event_loop())
+
+import uvloop
 uvloop.install()
 
 import logging
@@ -16,6 +22,9 @@ from pytgcalls import filters as fl
 from pyromod import listen
 from PyroUbot.config import *
 from aiohttp import ClientSession
+
+# ... sisanya tetap seperti semula
+
 
 class ConnectionHandler(logging.Handler):
     def emit(self, record):
