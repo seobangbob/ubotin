@@ -1,4 +1,4 @@
-## Vii Userbot
+## UbotinBot
 ```
 apt update && apt upgrade -y
 ```
